@@ -1,0 +1,270 @@
+[2021-08-20 22:19:30,111: INFO/MainProcess] beat: Shutting down...
+[2021-08-20 22:19:37,605: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2021-08-20 22:19:37,613: INFO/MainProcess] mingle: searching for neighbors
+[2021-08-20 22:19:38,632: INFO/MainProcess] mingle: all alone
+[2021-08-20 22:19:38,642: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2021-08-20 22:19:38,642: INFO/MainProcess] celery@fe40b533351c ready.
+[2021-08-20 22:19:39,415: INFO/Beat] beat: Starting...
+[2021-08-20 22:20:00,020: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2021-08-20 22:20:00,033: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2021-08-20 22:20:00,034: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[6d898b83-c035-42a7-b2b6-044dc642a462] received
+[2021-08-20 22:20:00,035: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2021-08-20 22:20:00,036: INFO/MainProcess] Task providers.tasks.process_values_sending[abef3640-283a-47d5-a539-4f73ee5a171a] received
+[2021-08-20 22:20:00,037: INFO/MainProcess] Task providers.tasks.provider_creation_task[0e3be062-ee84-4f7c-8c3a-7e94e5e05b42] received
+[2021-08-20 22:20:00,050: INFO/ForkPoolWorker-2] Task providers.tasks.provider_creation_task[0e3be062-ee84-4f7c-8c3a-7e94e5e05b42] succeeded in 0.011125041999548557s: True
+[2021-08-20 22:20:00,062: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[6d898b83-c035-42a7-b2b6-044dc642a462] succeeded in 0.025845999000011943s: True
+[2021-08-20 22:20:00,068: INFO/MainProcess] Task providers.tasks.send_data[b61a85dd-bb64-4002-b784-63e9219bf025] received
+[2021-08-20 22:20:00,070: INFO/MainProcess] Task providers.tasks.send_data[08526adf-ac01-4692-857c-a378ae72bbe3] received
+[2021-08-20 22:20:00,071: INFO/MainProcess] Task providers.tasks.send_data[c24a4fbc-676d-4660-84d2-5a48f1b6017b] received
+[2021-08-20 22:20:00,072: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[abef3640-283a-47d5-a539-4f73ee5a171a] succeeded in 0.036204672998792375s: None
+[2021-08-20 22:20:00,073: INFO/MainProcess] Task providers.tasks.send_data[1636f50f-75f4-4d45-ab4c-2166e58d08c2] received
+[2021-08-20 22:20:00,075: INFO/MainProcess] Task providers.tasks.send_data[db16bb10-c30b-4a4c-95f4-a395f4895467] received
+[2021-08-20 22:20:00,078: INFO/MainProcess] Task providers.tasks.send_data[07dbb27c-f75a-467a-8cbc-eb6e1b5687ae] received
+[2021-08-20 22:20:00,090: WARNING/ForkPoolWorker-2] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:20:00,090: WARNING/ForkPoolWorker-2] 
+
+[2021-08-20 22:20:00,091: WARNING/ForkPoolWorker-8] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:20:00,091: WARNING/ForkPoolWorker-8] 
+
+[2021-08-20 22:20:00,093: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[08526adf-ac01-4692-857c-a378ae72bbe3] succeeded in 0.022852297999634175s: None
+[2021-08-20 22:20:00,094: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[b61a85dd-bb64-4002-b784-63e9219bf025] succeeded in 0.023911676998977782s: None
+[2021-08-20 22:20:00,095: WARNING/ForkPoolWorker-3] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:20:00,096: WARNING/ForkPoolWorker-3] 
+
+[2021-08-20 22:20:00,098: WARNING/ForkPoolWorker-4] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:20:00,098: WARNING/ForkPoolWorker-4] 
+
+[2021-08-20 22:20:00,098: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[c24a4fbc-676d-4660-84d2-5a48f1b6017b] succeeded in 0.024319004000062705s: None
+[2021-08-20 22:20:00,100: INFO/ForkPoolWorker-4] Task providers.tasks.send_data[1636f50f-75f4-4d45-ab4c-2166e58d08c2] succeeded in 0.026529196000410593s: None
+[2021-08-20 22:20:00,101: WARNING/ForkPoolWorker-5] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:20:00,102: WARNING/ForkPoolWorker-5] 
+
+[2021-08-20 22:20:00,102: WARNING/ForkPoolWorker-9] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:20:00,102: WARNING/ForkPoolWorker-9] 
+
+[2021-08-20 22:20:00,104: INFO/ForkPoolWorker-5] Task providers.tasks.send_data[07dbb27c-f75a-467a-8cbc-eb6e1b5687ae] succeeded in 0.025423936000152025s: None
+[2021-08-20 22:20:00,105: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[db16bb10-c30b-4a4c-95f4-a395f4895467] succeeded in 0.026509172999794828s: None
+[2021-08-20 22:21:00,041: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2021-08-20 22:21:00,046: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2021-08-20 22:21:00,048: INFO/MainProcess] Task providers.tasks.process_values_sending[9eea28c9-2711-454e-94d2-25ee50f02b52] received
+[2021-08-20 22:21:00,053: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[32ee23b4-900f-4006-8024-da1874384a7c] received
+[2021-08-20 22:21:00,109: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[32ee23b4-900f-4006-8024-da1874384a7c] succeeded in 0.05466533700018772s: True
+[2021-08-20 22:21:00,125: INFO/MainProcess] Task providers.tasks.send_data[9ddc4f16-a89f-4c92-b494-ab376442b6f3] received
+[2021-08-20 22:21:00,126: INFO/MainProcess] Task providers.tasks.send_data[f34fab0b-e246-4459-a033-999461745d64] received
+[2021-08-20 22:21:00,127: INFO/MainProcess] Task providers.tasks.send_data[64103ace-feb2-4a85-b874-6cbcf6b5b58e] received
+[2021-08-20 22:21:00,131: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[9eea28c9-2711-454e-94d2-25ee50f02b52] succeeded in 0.07664100300098653s: None
+[2021-08-20 22:21:00,132: INFO/MainProcess] Task providers.tasks.send_data[a443cb66-0548-40f0-a177-8db686299a03] received
+[2021-08-20 22:21:00,135: INFO/MainProcess] Task providers.tasks.send_data[04b8d8ea-f9bd-498c-999a-ff1beec26282] received
+[2021-08-20 22:21:00,139: INFO/MainProcess] Task providers.tasks.send_data[384d5798-8c9d-4eb5-9862-205606e35e57] received
+[2021-08-20 22:21:00,156: WARNING/ForkPoolWorker-2] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:21:00,156: WARNING/ForkPoolWorker-2] 
+
+[2021-08-20 22:21:00,159: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[f34fab0b-e246-4459-a033-999461745d64] succeeded in 0.0329459130007308s: None
+[2021-08-20 22:21:00,166: WARNING/ForkPoolWorker-9] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:21:00,167: WARNING/ForkPoolWorker-9] 
+
+[2021-08-20 22:21:00,169: WARNING/ForkPoolWorker-3] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:21:00,169: WARNING/ForkPoolWorker-3] 
+
+[2021-08-20 22:21:00,169: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[9ddc4f16-a89f-4c92-b494-ab376442b6f3] succeeded in 0.04308136200052104s: None
+[2021-08-20 22:21:00,172: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[64103ace-feb2-4a85-b874-6cbcf6b5b58e] succeeded in 0.0395005009995657s: None
+[2021-08-20 22:21:00,177: WARNING/ForkPoolWorker-4] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:21:00,177: WARNING/ForkPoolWorker-4] 
+
+[2021-08-20 22:21:00,184: INFO/ForkPoolWorker-4] Task providers.tasks.send_data[a443cb66-0548-40f0-a177-8db686299a03] succeeded in 0.050796887999240425s: None
+[2021-08-20 22:21:00,187: WARNING/ForkPoolWorker-8] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:21:00,187: WARNING/ForkPoolWorker-5] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:21:00,187: WARNING/ForkPoolWorker-8] 
+
+[2021-08-20 22:21:00,187: WARNING/ForkPoolWorker-5] 
+
+[2021-08-20 22:21:00,190: INFO/ForkPoolWorker-5] Task providers.tasks.send_data[384d5798-8c9d-4eb5-9862-205606e35e57] succeeded in 0.04740498999854026s: None
+[2021-08-20 22:21:00,194: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[04b8d8ea-f9bd-498c-999a-ff1beec26282] succeeded in 0.054492805000336375s: None
+[2021-08-20 22:21:05,695: INFO/MainProcess] beat: Shutting down...
+[2021-08-20 22:21:13,660: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2021-08-20 22:21:13,668: INFO/MainProcess] mingle: searching for neighbors
+[2021-08-20 22:21:14,686: INFO/MainProcess] mingle: all alone
+[2021-08-20 22:21:14,697: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2021-08-20 22:21:14,697: INFO/MainProcess] celery@fe40b533351c ready.
+[2021-08-20 22:21:15,550: INFO/Beat] beat: Starting...
+[2021-08-20 22:22:00,053: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2021-08-20 22:22:00,086: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2021-08-20 22:22:00,088: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[85ecad68-a205-4aa2-b592-93035fa503fe] received
+[2021-08-20 22:22:00,090: INFO/MainProcess] Task providers.tasks.process_values_sending[486d7242-f89d-4ba1-9b5b-0e9e0c9a1c2e] received
+[2021-08-20 22:22:00,132: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[85ecad68-a205-4aa2-b592-93035fa503fe] succeeded in 0.04094718099986494s: True
+[2021-08-20 22:22:00,137: INFO/MainProcess] Task providers.tasks.send_data[2f2b409a-f4fe-4eb3-9351-bd75bbfcebd0] received
+[2021-08-20 22:22:00,138: INFO/MainProcess] Task providers.tasks.send_data[2d36c362-08b5-4282-9539-9e642a66d5b0] received
+[2021-08-20 22:22:00,139: INFO/MainProcess] Task providers.tasks.send_data[b5179848-3ee6-428c-bc42-a56421990c77] received
+[2021-08-20 22:22:00,141: INFO/MainProcess] Task providers.tasks.send_data[4ef19df5-fb28-4f2c-8f71-997b269fa5a5] received
+[2021-08-20 22:22:00,143: INFO/MainProcess] Task providers.tasks.send_data[d01ee1f4-e67e-48a4-b41b-4dfaa5d10a67] received
+[2021-08-20 22:22:00,143: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[486d7242-f89d-4ba1-9b5b-0e9e0c9a1c2e] succeeded in 0.051871823001420125s: None
+[2021-08-20 22:22:00,145: INFO/MainProcess] Task providers.tasks.send_data[ce48104c-6ab7-43b1-b99a-9e4cfa8e8db5] received
+[2021-08-20 22:22:00,147: INFO/MainProcess] Task providers.tasks.send_data[bbef6874-926c-4087-8d14-78e891ced453] received
+[2021-08-20 22:22:00,171: WARNING/ForkPoolWorker-2] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,171: WARNING/ForkPoolWorker-2] 
+
+[2021-08-20 22:22:00,172: WARNING/ForkPoolWorker-3] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,172: WARNING/ForkPoolWorker-3] 
+
+[2021-08-20 22:22:00,174: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[2d36c362-08b5-4282-9539-9e642a66d5b0] succeeded in 0.03539787799854821s: None
+[2021-08-20 22:22:00,175: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[b5179848-3ee6-428c-bc42-a56421990c77] succeeded in 0.03296690199931618s: None
+[2021-08-20 22:22:00,176: WARNING/ForkPoolWorker-8] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,177: WARNING/ForkPoolWorker-8] 
+
+[2021-08-20 22:22:00,177: WARNING/ForkPoolWorker-4] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,178: WARNING/ForkPoolWorker-4] 
+
+[2021-08-20 22:22:00,178: WARNING/ForkPoolWorker-9] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,178: WARNING/ForkPoolWorker-9] 
+
+[2021-08-20 22:22:00,179: WARNING/ForkPoolWorker-6] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,179: WARNING/ForkPoolWorker-6] 
+
+[2021-08-20 22:22:00,180: WARNING/ForkPoolWorker-5] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:22:00,180: WARNING/ForkPoolWorker-5] 
+
+[2021-08-20 22:22:00,180: INFO/ForkPoolWorker-4] Task providers.tasks.send_data[4ef19df5-fb28-4f2c-8f71-997b269fa5a5] succeeded in 0.03819703999943158s: None
+[2021-08-20 22:22:00,181: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[d01ee1f4-e67e-48a4-b41b-4dfaa5d10a67] succeeded in 0.03550609000012628s: None
+[2021-08-20 22:22:00,181: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[2f2b409a-f4fe-4eb3-9351-bd75bbfcebd0] succeeded in 0.043090695000501s: None
+[2021-08-20 22:22:00,186: INFO/ForkPoolWorker-6] Task providers.tasks.send_data[bbef6874-926c-4087-8d14-78e891ced453] succeeded in 0.035905373999412404s: None
+[2021-08-20 22:22:00,187: INFO/ForkPoolWorker-5] Task providers.tasks.send_data[ce48104c-6ab7-43b1-b99a-9e4cfa8e8db5] succeeded in 0.040702030000829836s: None
+[2021-08-20 22:23:00,049: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2021-08-20 22:23:00,055: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2021-08-20 22:23:00,057: INFO/MainProcess] Task providers.tasks.process_values_sending[598cd005-7a45-4ff9-966b-dadde84260e4] received
+[2021-08-20 22:23:00,062: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[851c3ceb-ba3c-4648-b997-4da5bdc0c860] received
+[2021-08-20 22:23:00,122: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[851c3ceb-ba3c-4648-b997-4da5bdc0c860] succeeded in 0.054788467999969725s: True
+[2021-08-20 22:23:00,127: INFO/MainProcess] Task providers.tasks.send_data[2bbc70e6-4d50-4200-ab3c-11bd290f715d] received
+[2021-08-20 22:23:00,129: INFO/MainProcess] Task providers.tasks.send_data[09a4fd0f-749f-4974-b068-50226a2d3fd1] received
+[2021-08-20 22:23:00,131: INFO/MainProcess] Task providers.tasks.send_data[e9fa99aa-b66d-400a-b790-33d2333371ca] received
+[2021-08-20 22:23:00,134: INFO/MainProcess] Task providers.tasks.send_data[087f8241-e7d6-4dc5-a153-4c18926ad127] received
+[2021-08-20 22:23:00,135: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[598cd005-7a45-4ff9-966b-dadde84260e4] succeeded in 0.07528989099955652s: None
+[2021-08-20 22:23:00,135: INFO/MainProcess] Task providers.tasks.send_data[e9033cfa-c364-4598-8276-b091dde90492] received
+[2021-08-20 22:23:00,138: INFO/MainProcess] Task providers.tasks.send_data[eb6039f3-dbc2-4bbe-9678-d4ed909102c9] received
+[2021-08-20 22:23:00,140: INFO/MainProcess] Task providers.tasks.send_data[20249150-a187-4d4a-a60d-65f33612e7f7] received
+[2021-08-20 22:23:00,144: WARNING/ForkPoolWorker-2] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,144: WARNING/ForkPoolWorker-2] 
+
+[2021-08-20 22:23:00,144: WARNING/ForkPoolWorker-9] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,145: WARNING/ForkPoolWorker-9] 
+
+[2021-08-20 22:23:00,147: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[09a4fd0f-749f-4974-b068-50226a2d3fd1] succeeded in 0.017114472999310237s: None
+[2021-08-20 22:23:00,149: WARNING/ForkPoolWorker-4] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,149: WARNING/ForkPoolWorker-4] 
+
+[2021-08-20 22:23:00,149: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[2bbc70e6-4d50-4200-ab3c-11bd290f715d] succeeded in 0.019393684999158722s: None
+[2021-08-20 22:23:00,151: INFO/ForkPoolWorker-4] Task providers.tasks.send_data[087f8241-e7d6-4dc5-a153-4c18926ad127] succeeded in 0.016894553000383894s: None
+[2021-08-20 22:23:00,158: WARNING/ForkPoolWorker-5] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,158: WARNING/ForkPoolWorker-3] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,159: WARNING/ForkPoolWorker-5] 
+
+[2021-08-20 22:23:00,159: WARNING/ForkPoolWorker-3] 
+
+[2021-08-20 22:23:00,159: WARNING/ForkPoolWorker-8] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,160: WARNING/ForkPoolWorker-8] 
+
+[2021-08-20 22:23:00,160: WARNING/ForkPoolWorker-6] {"non_field_errors":["Invalid data. Expected a dictionary, but got str."]}
+[2021-08-20 22:23:00,160: WARNING/ForkPoolWorker-6] 
+
+[2021-08-20 22:23:00,161: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[e9fa99aa-b66d-400a-b790-33d2333371ca] succeeded in 0.026850543001273763s: None
+[2021-08-20 22:23:00,161: INFO/ForkPoolWorker-5] Task providers.tasks.send_data[eb6039f3-dbc2-4bbe-9678-d4ed909102c9] succeeded in 0.022690194000460906s: None
+[2021-08-20 22:23:00,162: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[e9033cfa-c364-4598-8276-b091dde90492] succeeded in 0.023777431999405962s: None
+[2021-08-20 22:23:00,163: INFO/ForkPoolWorker-6] Task providers.tasks.send_data[20249150-a187-4d4a-a60d-65f33612e7f7] succeeded in 0.021223000998361385s: None
+[2021-08-20 22:23:22,680: INFO/MainProcess] beat: Shutting down...
+[2021-08-20 22:23:30,334: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2021-08-20 22:23:30,345: INFO/MainProcess] mingle: searching for neighbors
+[2021-08-20 22:23:31,364: INFO/MainProcess] mingle: all alone
+[2021-08-20 22:23:31,376: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2021-08-20 22:23:31,376: INFO/MainProcess] celery@fe40b533351c ready.
+[2021-08-20 22:23:32,299: INFO/Beat] beat: Starting...
+[2021-08-20 22:24:00,032: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2021-08-20 22:24:00,047: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2021-08-20 22:24:00,048: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[a44ace72-d8f1-4d42-8d81-b3db8d0f7859] received
+[2021-08-20 22:24:00,050: INFO/MainProcess] Task providers.tasks.process_values_sending[ae74c535-5e11-4530-8d66-8f8a18fc06c9] received
+[2021-08-20 22:24:00,082: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[a44ace72-d8f1-4d42-8d81-b3db8d0f7859] succeeded in 0.03188092399977904s: True
+[2021-08-20 22:24:00,085: INFO/MainProcess] Task providers.tasks.send_data[a72e57cc-728d-49e2-82d0-db2493de2f16] received
+[2021-08-20 22:24:00,086: INFO/MainProcess] Task providers.tasks.send_data[98c09ea2-d959-4f79-9ef4-ecea4f953d6e] received
+[2021-08-20 22:24:00,087: INFO/MainProcess] Task providers.tasks.send_data[e81c9283-329c-4531-bd27-c0060a01160b] received
+[2021-08-20 22:24:00,089: INFO/MainProcess] Task providers.tasks.send_data[b3ec25ff-794a-4243-a4ba-d46266fa11a5] received
+[2021-08-20 22:24:00,090: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[ae74c535-5e11-4530-8d66-8f8a18fc06c9] succeeded in 0.03990511099982541s: None
+[2021-08-20 22:24:00,091: INFO/MainProcess] Task providers.tasks.send_data[847e91bf-026b-4ae5-915e-fd935fc1baf7] received
+[2021-08-20 22:24:00,094: INFO/MainProcess] Task providers.tasks.send_data[9e7c2507-e1d0-4c3e-b4b6-db66bdaa6249] received
+[2021-08-20 22:24:00,097: INFO/MainProcess] Task providers.tasks.send_data[73606d76-6524-478f-8b02-13569b8c6bd3] received
+[2021-08-20 22:24:00,145: WARNING/ForkPoolWorker-2] {}
+[2021-08-20 22:24:00,146: WARNING/ForkPoolWorker-2] 
+
+[2021-08-20 22:24:00,149: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[98c09ea2-d959-4f79-9ef4-ecea4f953d6e] succeeded in 0.062125813999955426s: None
+[2021-08-20 22:24:00,151: WARNING/ForkPoolWorker-8] {}
+[2021-08-20 22:24:00,151: WARNING/ForkPoolWorker-8] 
+
+[2021-08-20 22:24:00,151: WARNING/ForkPoolWorker-4] {}
+[2021-08-20 22:24:00,151: WARNING/ForkPoolWorker-4] 
+
+[2021-08-20 22:24:00,154: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[a72e57cc-728d-49e2-82d0-db2493de2f16] succeeded in 0.06778733400096826s: None
+[2021-08-20 22:24:00,155: WARNING/ForkPoolWorker-9] {}
+[2021-08-20 22:24:00,155: WARNING/ForkPoolWorker-9] 
+
+[2021-08-20 22:24:00,155: INFO/ForkPoolWorker-4] Task providers.tasks.send_data[b3ec25ff-794a-4243-a4ba-d46266fa11a5] succeeded in 0.0651365639987489s: None
+[2021-08-20 22:24:00,156: WARNING/ForkPoolWorker-3] {}
+[2021-08-20 22:24:00,157: WARNING/ForkPoolWorker-3] 
+
+[2021-08-20 22:24:00,158: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[847e91bf-026b-4ae5-915e-fd935fc1baf7] succeeded in 0.06255672199949913s: None
+[2021-08-20 22:24:00,159: WARNING/ForkPoolWorker-5] {}
+[2021-08-20 22:24:00,160: WARNING/ForkPoolWorker-5] 
+
+[2021-08-20 22:24:00,161: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[e81c9283-329c-4531-bd27-c0060a01160b] succeeded in 0.07125668000117003s: None
+[2021-08-20 22:24:00,164: INFO/ForkPoolWorker-5] Task providers.tasks.send_data[9e7c2507-e1d0-4c3e-b4b6-db66bdaa6249] succeeded in 0.06805931300004886s: None
+[2021-08-20 22:24:00,164: WARNING/ForkPoolWorker-6] {}
+[2021-08-20 22:24:00,164: WARNING/ForkPoolWorker-6] 
+
+[2021-08-20 22:24:00,167: INFO/ForkPoolWorker-6] Task providers.tasks.send_data[73606d76-6524-478f-8b02-13569b8c6bd3] succeeded in 0.06805120399985753s: None
+[2021-08-20 22:25:00,050: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2021-08-20 22:25:00,052: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2021-08-20 22:25:00,053: INFO/MainProcess] Task providers.tasks.process_values_sending[7e3ebd47-49f1-4391-abea-5f7b96c8a057] received
+[2021-08-20 22:25:00,054: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[47c14440-f632-4b7c-84c7-126488c1a73d] received
+[2021-08-20 22:25:00,081: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[47c14440-f632-4b7c-84c7-126488c1a73d] succeeded in 0.026212216998828808s: True
+[2021-08-20 22:25:00,086: INFO/MainProcess] Task providers.tasks.send_data[bb62b3dc-af1a-4d58-bbd2-64e7e3674304] received
+[2021-08-20 22:25:00,087: INFO/MainProcess] Task providers.tasks.send_data[12600703-88b1-425c-bb36-48222b4adf73] received
+[2021-08-20 22:25:00,089: INFO/MainProcess] Task providers.tasks.send_data[aadf708a-a0aa-4cbb-b83b-0a87e97dcfe3] received
+[2021-08-20 22:25:00,091: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[7e3ebd47-49f1-4391-abea-5f7b96c8a057] succeeded in 0.03626212299968756s: None
+[2021-08-20 22:25:00,091: INFO/MainProcess] Task providers.tasks.send_data[e275dc2d-6657-496e-a5f0-db013757e5d2] received
+[2021-08-20 22:25:00,093: INFO/MainProcess] Task providers.tasks.send_data[c65a9088-564f-4ea4-88ee-ebd0c0281f30] received
+[2021-08-20 22:25:00,096: INFO/MainProcess] Task providers.tasks.send_data[33fe2c07-1077-4e2b-a672-e31b56cb5aca] received
+[2021-08-20 22:25:00,098: INFO/MainProcess] Task providers.tasks.send_data[782781f0-c832-4d49-80d4-ddc4b5c2b970] received
+[2021-08-20 22:25:00,131: WARNING/ForkPoolWorker-2] {}
+[2021-08-20 22:25:00,131: WARNING/ForkPoolWorker-2] 
+
+[2021-08-20 22:25:00,131: WARNING/ForkPoolWorker-9] {}
+[2021-08-20 22:25:00,131: WARNING/ForkPoolWorker-9] 
+
+[2021-08-20 22:25:00,134: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[12600703-88b1-425c-bb36-48222b4adf73] succeeded in 0.04572698700030742s: None
+[2021-08-20 22:25:00,135: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[bb62b3dc-af1a-4d58-bbd2-64e7e3674304] succeeded in 0.04694124299930991s: None
+[2021-08-20 22:25:00,135: WARNING/ForkPoolWorker-8] {}
+[2021-08-20 22:25:00,135: WARNING/ForkPoolWorker-8] 
+
+[2021-08-20 22:25:00,137: WARNING/ForkPoolWorker-4] {}
+[2021-08-20 22:25:00,137: WARNING/ForkPoolWorker-4] 
+
+[2021-08-20 22:25:00,138: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[c65a9088-564f-4ea4-88ee-ebd0c0281f30] succeeded in 0.041133254000669695s: None
+[2021-08-20 22:25:00,139: INFO/ForkPoolWorker-4] Task providers.tasks.send_data[e275dc2d-6657-496e-a5f0-db013757e5d2] succeeded in 0.047295430000303895s: None
+[2021-08-20 22:25:00,141: WARNING/ForkPoolWorker-5] {}
+[2021-08-20 22:25:00,142: WARNING/ForkPoolWorker-5] 
+
+[2021-08-20 22:25:00,142: WARNING/ForkPoolWorker-3] {}
+[2021-08-20 22:25:00,143: WARNING/ForkPoolWorker-3] 
+
+[2021-08-20 22:25:00,144: WARNING/ForkPoolWorker-6] {}
+[2021-08-20 22:25:00,144: WARNING/ForkPoolWorker-6] 
+
+[2021-08-20 22:25:00,144: INFO/ForkPoolWorker-5] Task providers.tasks.send_data[33fe2c07-1077-4e2b-a672-e31b56cb5aca] succeeded in 0.0473175999995874s: None
+[2021-08-20 22:25:00,145: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[aadf708a-a0aa-4cbb-b83b-0a87e97dcfe3] succeeded in 0.05321503999948618s: None
+[2021-08-20 22:25:00,146: INFO/ForkPoolWorker-6] Task providers.tasks.send_data[782781f0-c832-4d49-80d4-ddc4b5c2b970] succeeded in 0.04602926799998386s: None
+[2021-08-20 22:25:32,719: INFO/MainProcess] beat: Shutting down...
