@@ -268,3 +268,2018 @@
 [2021-08-20 22:25:00,145: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[aadf708a-a0aa-4cbb-b83b-0a87e97dcfe3] succeeded in 0.05321503999948618s: None
 [2021-08-20 22:25:00,146: INFO/ForkPoolWorker-6] Task providers.tasks.send_data[782781f0-c832-4d49-80d4-ddc4b5c2b970] succeeded in 0.04602926799998386s: None
 [2021-08-20 22:25:32,719: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 06:52:07,202: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 06:52:07,219: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 06:52:08,253: INFO/MainProcess] mingle: all alone
+[2022-04-18 06:52:08,280: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 06:52:08,280: INFO/MainProcess] celery@c71f2322a1ad ready.
+[2022-04-18 06:52:09,461: INFO/Beat] beat: Starting...
+[2022-04-18 06:52:09,486: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-18 06:52:09,497: INFO/MainProcess] Task providers.tasks.provider_creation_task[a4d5d0f1-7714-4e99-a35c-0375c66ae847] received
+[2022-04-18 06:52:09,498: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:52:09,500: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:52:09,501: INFO/MainProcess] Task providers.tasks.process_values_sending[8fd1103b-e66f-4bd8-93cd-8492488e0d90] received
+[2022-04-18 06:52:09,502: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[b66e8388-0711-4934-be37-dfc8b7cc0133] received
+[2022-04-18 06:52:09,506: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_creation_task[a4d5d0f1-7714-4e99-a35c-0375c66ae847] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 9, in provider_creation_task
+    ProviderService().create_provider()
+  File "/code/providers/services/provider_services.py", line 9, in create_provider
+    client=Client.objects.create(description=client_description)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 906, in _do_insert
+    return manager._insert(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1414, in execute_sql
+    with self.connection.cursor() as cursor:
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:52:09,508: ERROR/ForkPoolWorker-9] Task providers.tasks.process_values_sending[8fd1103b-e66f-4bd8-93cd-8492488e0d90] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:52:09,510: ERROR/ForkPoolWorker-2] Task providers.tasks.provider_values_creation_task[b66e8388-0711-4934-be37-dfc8b7cc0133] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:52:24,558: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 06:52:44,156: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 06:52:44,177: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 06:52:45,213: INFO/MainProcess] mingle: all alone
+[2022-04-18 06:52:45,228: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 06:52:45,228: INFO/MainProcess] celery@c71f2322a1ad ready.
+[2022-04-18 06:52:46,815: INFO/Beat] beat: Starting...
+[2022-04-18 06:53:00,058: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:53:00,112: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:53:00,114: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[0c2fe48d-bb53-4cdb-bc26-1ec2fa9a4cd0] received
+[2022-04-18 06:53:00,118: INFO/MainProcess] Task providers.tasks.process_values_sending[beb327a7-67ac-44c1-8426-d4cd52e7514f] received
+[2022-04-18 06:53:00,131: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[0c2fe48d-bb53-4cdb-bc26-1ec2fa9a4cd0] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:53:00,134: ERROR/ForkPoolWorker-9] Task providers.tasks.process_values_sending[beb327a7-67ac-44c1-8426-d4cd52e7514f] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:54:00,050: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:54:00,052: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:54:00,052: INFO/MainProcess] Task providers.tasks.process_values_sending[179496d2-e25a-412d-bba8-39861334a58c] received
+[2022-04-18 06:54:00,054: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[d7f526e0-8453-4fb7-8b3b-6f4a860d3cd3] received
+[2022-04-18 06:54:00,056: ERROR/ForkPoolWorker-8] Task providers.tasks.process_values_sending[179496d2-e25a-412d-bba8-39861334a58c] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:54:00,058: ERROR/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[d7f526e0-8453-4fb7-8b3b-6f4a860d3cd3] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:55:00,005: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:55:00,011: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:55:00,013: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[d45a015b-1bc4-4b29-b3e8-31ddfdc5e2bb] received
+[2022-04-18 06:55:00,017: INFO/MainProcess] Task providers.tasks.process_values_sending[e892f132-fc5c-4b4b-9d8b-b21c783f0ced] received
+[2022-04-18 06:55:00,025: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[d45a015b-1bc4-4b29-b3e8-31ddfdc5e2bb] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:55:00,026: ERROR/ForkPoolWorker-9] Task providers.tasks.process_values_sending[e892f132-fc5c-4b4b-9d8b-b21c783f0ced] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:56:00,055: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:56:00,058: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:56:00,059: INFO/MainProcess] Task providers.tasks.process_values_sending[4e363ebb-98b7-4f86-b9ef-5fcc63230364] received
+[2022-04-18 06:56:00,063: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[4288ed00-6bff-469b-bd14-d67cd9f87156] received
+[2022-04-18 06:56:00,063: ERROR/ForkPoolWorker-8] Task providers.tasks.process_values_sending[4e363ebb-98b7-4f86-b9ef-5fcc63230364] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:56:00,067: ERROR/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[4288ed00-6bff-469b-bd14-d67cd9f87156] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:56:41,708: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 06:56:51,513: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 06:56:51,524: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 06:56:52,550: INFO/MainProcess] mingle: all alone
+[2022-04-18 06:56:52,568: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 06:56:52,568: INFO/MainProcess] celery@c71f2322a1ad ready.
+[2022-04-18 06:56:54,497: INFO/Beat] beat: Starting...
+[2022-04-18 06:57:00,045: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:57:00,067: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:57:00,068: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[fcb1c346-6671-42e6-be11-9b018da6483d] received
+[2022-04-18 06:57:00,070: INFO/MainProcess] Task providers.tasks.process_values_sending[df3a7e65-99f9-4947-9e36-23fe040ae09a] received
+[2022-04-18 06:57:00,082: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[fcb1c346-6671-42e6-be11-9b018da6483d] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:57:00,086: ERROR/ForkPoolWorker-9] Task providers.tasks.process_values_sending[df3a7e65-99f9-4947-9e36-23fe040ae09a] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:57:37,742: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 06:57:51,121: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 06:57:51,139: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 06:57:52,177: INFO/MainProcess] mingle: all alone
+[2022-04-18 06:57:52,191: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 06:57:52,191: INFO/MainProcess] celery@c71f2322a1ad ready.
+[2022-04-18 06:57:54,205: INFO/Beat] beat: Starting...
+[2022-04-18 06:58:00,054: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:58:00,107: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:58:00,108: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[f7fe45f2-d978-4809-90db-e1c647fa485a] received
+[2022-04-18 06:58:00,111: INFO/MainProcess] Task providers.tasks.process_values_sending[e310af08-4707-4bed-8569-e54c92dbb52b] received
+[2022-04-18 06:58:00,123: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[f7fe45f2-d978-4809-90db-e1c647fa485a] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:58:00,125: ERROR/ForkPoolWorker-9] Task providers.tasks.process_values_sending[e310af08-4707-4bed-8569-e54c92dbb52b] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:59:00,050: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 06:59:00,051: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 06:59:00,052: INFO/MainProcess] Task providers.tasks.process_values_sending[da2183dc-383e-43e7-a382-49623c02ab97] received
+[2022-04-18 06:59:00,054: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[54b1d0fe-06af-4b14-8a7c-704355d93431] received
+[2022-04-18 06:59:00,056: ERROR/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[54b1d0fe-06af-4b14-8a7c-704355d93431] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 06:59:00,056: ERROR/ForkPoolWorker-8] Task providers.tasks.process_values_sending[da2183dc-383e-43e7-a382-49623c02ab97] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:00:00,016: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-18 07:00:00,019: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:00:00,020: INFO/MainProcess] Task providers.tasks.provider_creation_task[48361c55-36ac-4fd8-850e-f74fca6474d9] received
+[2022-04-18 07:00:00,021: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:00:00,022: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[d774c339-dc0a-43e0-96df-90ffc097bf81] received
+[2022-04-18 07:00:00,024: INFO/MainProcess] Task providers.tasks.process_values_sending[b6a30576-2b4e-4036-b0fd-fa481cef82f4] received
+[2022-04-18 07:00:00,025: ERROR/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[d774c339-dc0a-43e0-96df-90ffc097bf81] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:00:00,026: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_creation_task[48361c55-36ac-4fd8-850e-f74fca6474d9] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 9, in provider_creation_task
+    ProviderService().create_provider()
+  File "/code/providers/services/provider_services.py", line 9, in create_provider
+    client=Client.objects.create(description=client_description)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 453, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 763, in save_base
+    updated = self._save_table(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/base.py", line 906, in _do_insert
+    return manager._insert(
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1414, in execute_sql
+    with self.connection.cursor() as cursor:
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:00:00,034: ERROR/ForkPoolWorker-2] Task providers.tasks.process_values_sending[b6a30576-2b4e-4036-b0fd-fa481cef82f4] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:01:00,001: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:01:00,008: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[2663fbd5-6c9c-4cfd-b5ea-ea6dc05ef5b2] received
+[2022-04-18 07:01:00,012: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:01:00,017: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[2663fbd5-6c9c-4cfd-b5ea-ea6dc05ef5b2] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:01:00,019: INFO/MainProcess] Task providers.tasks.process_values_sending[f9100c5a-7a12-43fb-8715-2ec686e9364d] received
+[2022-04-18 07:01:00,031: ERROR/ForkPoolWorker-8] Task providers.tasks.process_values_sending[f9100c5a-7a12-43fb-8715-2ec686e9364d] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:02:00,000: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:02:00,014: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:02:00,016: INFO/MainProcess] Task providers.tasks.process_values_sending[9428e3e4-4389-465e-ba30-3284504f19a1] received
+[2022-04-18 07:02:00,021: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[4ea1cd78-d5c3-4445-af6e-e9c164d06a24] received
+[2022-04-18 07:02:00,026: ERROR/ForkPoolWorker-8] Task providers.tasks.process_values_sending[9428e3e4-4389-465e-ba30-3284504f19a1] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:02:00,032: ERROR/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[4ea1cd78-d5c3-4445-af6e-e9c164d06a24] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:03:00,026: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:03:00,029: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:03:00,030: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[0f489e25-df50-403b-adcf-132b964e3f93] received
+[2022-04-18 07:03:00,033: INFO/MainProcess] Task providers.tasks.process_values_sending[7cbcfdc6-fed3-4707-94d7-3ba8468336e7] received
+[2022-04-18 07:03:00,035: ERROR/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[0f489e25-df50-403b-adcf-132b964e3f93] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:03:00,041: ERROR/ForkPoolWorker-9] Task providers.tasks.process_values_sending[7cbcfdc6-fed3-4707-94d7-3ba8468336e7] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:04:00,054: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:04:00,056: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:04:00,057: INFO/MainProcess] Task providers.tasks.process_values_sending[5dbeda51-6f22-4a64-b621-17eb305b68b2] received
+[2022-04-18 07:04:00,058: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[1e204e5f-6f23-4a17-9d8b-9a3f26f656b5] received
+[2022-04-18 07:04:00,059: ERROR/ForkPoolWorker-8] Task providers.tasks.process_values_sending[5dbeda51-6f22-4a64-b621-17eb305b68b2] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 30, in process_values_sending
+    for value_id in ProviderValue.objects.filter(sent_at__isnull=True).values_list('id', flat=True):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 171, in __iter__
+    for row in compiler.results_iter(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size):
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1130, in results_iter
+    results = self.execute_sql(MULTI, chunked_fetch=chunked_fetch, chunk_size=chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:04:00,061: ERROR/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[1e204e5f-6f23-4a17-9d8b-9a3f26f656b5] raised unexpected: OperationalError('could not translate host name "postgres_db" to address: Temporary failure in name resolution\n')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 450, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/celery/app/trace.py", line 731, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/code/providers/tasks.py", line 17, in provider_values_creation_task
+    for provider in providers:
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 280, in __iter__
+    self._fetch_all()
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/usr/local/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1173, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 259, in cursor
+    return self._cursor()
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 235, in _cursor
+    self.ensure_connection()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/db/utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 219, in ensure_connection
+    self.connect()
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/base/base.py", line 200, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "/usr/local/lib/python3.8/site-packages/django/utils/asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/site-packages/django/db/backends/postgresql/base.py", line 187, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File "/usr/local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "postgres_db" to address: Temporary failure in name resolution
+
+[2022-04-18 07:04:07,208: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 07:04:28,033: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 07:04:28,042: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 07:04:29,060: INFO/MainProcess] mingle: all alone
+[2022-04-18 07:04:29,069: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 07:04:29,069: INFO/MainProcess] celery@c71f2322a1ad ready.
+[2022-04-18 07:04:29,770: INFO/Beat] beat: Starting...
+[2022-04-18 07:04:50,555: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 07:29:28,119: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 07:29:28,133: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 07:29:29,162: INFO/MainProcess] mingle: all alone
+[2022-04-18 07:29:29,175: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 07:29:29,175: INFO/MainProcess] celery@c71f2322a1ad ready.
+[2022-04-18 07:29:29,918: INFO/Beat] beat: Starting...
+[2022-04-18 07:29:29,941: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-18 07:29:29,953: INFO/MainProcess] Task providers.tasks.provider_creation_task[d8d006fc-1b43-4690-b40f-5c61a5528e43] received
+[2022-04-18 07:29:29,954: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:29:29,956: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:29:29,956: INFO/MainProcess] Task providers.tasks.process_values_sending[ac5c9cac-017c-4d8a-8067-51648462afaf] received
+[2022-04-18 07:29:29,958: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[11343e1a-463c-4a36-aee9-43776f0a3c91] received
+[2022-04-18 07:29:29,969: INFO/ForkPoolWorker-8] Task providers.tasks.provider_creation_task[d8d006fc-1b43-4690-b40f-5c61a5528e43] succeeded in 0.015016543999990972s: True
+[2022-04-18 07:29:29,969: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[ac5c9cac-017c-4d8a-8067-51648462afaf] succeeded in 0.012421528000231774s: None
+[2022-04-18 07:29:29,976: INFO/ForkPoolWorker-2] Task providers.tasks.provider_values_creation_task[11343e1a-463c-4a36-aee9-43776f0a3c91] succeeded in 0.01688853499990728s: True
+[2022-04-18 07:30:00,018: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:30:00,020: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:30:00,021: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[4de1bac4-cbf5-4151-9077-a5531ca84e4b] received
+[2022-04-18 07:30:00,023: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-18 07:30:00,023: INFO/MainProcess] Task providers.tasks.process_values_sending[5b2c048a-fb0d-4bd3-8b40-559b0e4ded87] received
+[2022-04-18 07:30:00,026: INFO/MainProcess] Task providers.tasks.provider_creation_task[cf71caf2-b4e7-4ed6-bf4a-37115b4c29a4] received
+[2022-04-18 07:30:00,047: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[4de1bac4-cbf5-4151-9077-a5531ca84e4b] succeeded in 0.02310438599988629s: True
+[2022-04-18 07:30:00,048: INFO/ForkPoolWorker-2] Task providers.tasks.provider_creation_task[cf71caf2-b4e7-4ed6-bf4a-37115b4c29a4] succeeded in 0.019400751999910426s: True
+[2022-04-18 07:30:00,068: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[5b2c048a-fb0d-4bd3-8b40-559b0e4ded87] succeeded in 0.04390610399968864s: None
+[2022-04-18 07:30:00,069: INFO/MainProcess] Task providers.tasks.send_data[527422b1-a312-4790-bacc-e5436d195dd3] received
+[2022-04-18 07:30:00,200: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[527422b1-a312-4790-bacc-e5436d195dd3] succeeded in 0.12946152499989694s: None
+[2022-04-18 07:31:00,051: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:31:00,057: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:31:00,059: INFO/MainProcess] Task providers.tasks.process_values_sending[be60972f-0214-4bfc-b574-ed9257172bad] received
+[2022-04-18 07:31:00,065: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[812e025c-73f8-4b16-951b-97dc9d274fd3] received
+[2022-04-18 07:31:00,114: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[812e025c-73f8-4b16-951b-97dc9d274fd3] succeeded in 0.0433074630000192s: True
+[2022-04-18 07:31:00,124: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[be60972f-0214-4bfc-b574-ed9257172bad] succeeded in 0.06314968900005624s: None
+[2022-04-18 07:31:00,125: INFO/MainProcess] Task providers.tasks.send_data[a7ca9dbc-3f2f-4e7a-b51a-7e25cdce3521] received
+[2022-04-18 07:31:00,227: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[a7ca9dbc-3f2f-4e7a-b51a-7e25cdce3521] succeeded in 0.10167434799996045s: None
+[2022-04-18 07:32:00,051: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 07:32:00,056: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 07:32:00,058: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[65a4f545-9e33-4889-ad11-5a4b5831e9ba] received
+[2022-04-18 07:32:00,061: INFO/MainProcess] Task providers.tasks.process_values_sending[df9de174-dd15-4393-85b0-e7ba455185a9] received
+[2022-04-18 07:32:00,078: INFO/MainProcess] Task providers.tasks.send_data[fed30ea0-faf0-43cf-a41b-d5f4b4f2285d] received
+[2022-04-18 07:32:00,078: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[df9de174-dd15-4393-85b0-e7ba455185a9] succeeded in 0.016311275999669306s: None
+[2022-04-18 07:32:00,079: INFO/MainProcess] Task providers.tasks.send_data[f30eb5a2-5b62-4746-b4b9-098b43ce5271] received
+[2022-04-18 07:32:00,090: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[65a4f545-9e33-4889-ad11-5a4b5831e9ba] succeeded in 0.02836527500039665s: True
+[2022-04-18 07:32:00,192: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[fed30ea0-faf0-43cf-a41b-d5f4b4f2285d] succeeded in 0.11303231200008668s: None
+[2022-04-18 07:32:00,240: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[f30eb5a2-5b62-4746-b4b9-098b43ce5271] succeeded in 0.15925450700024157s: None
+[2022-04-18 07:32:12,789: INFO/MainProcess] beat: Shutting down...
+[2022-04-18 14:41:26,631: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-18 14:41:26,641: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-18 14:41:27,664: INFO/MainProcess] mingle: all alone
+[2022-04-18 14:41:27,678: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-18 14:41:27,678: INFO/MainProcess] celery@09e402e73f37 ready.
+[2022-04-18 14:41:29,056: INFO/Beat] beat: Starting...
+[2022-04-18 14:41:29,088: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-18 14:41:29,101: INFO/MainProcess] Task providers.tasks.provider_creation_task[18073c96-6f3c-4513-af20-5d019ef2fdf3] received
+[2022-04-18 14:41:29,103: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 14:41:29,105: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 14:41:29,105: INFO/MainProcess] Task providers.tasks.process_values_sending[d4ef3237-ad65-459f-a153-2f8556eb368f] received
+[2022-04-18 14:41:29,108: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[7d225699-c7be-430d-98ff-faa1ebcf2104] received
+[2022-04-18 14:41:29,124: INFO/ForkPoolWorker-8] Task providers.tasks.provider_creation_task[18073c96-6f3c-4513-af20-5d019ef2fdf3] succeeded in 0.021058266000181902s: True
+[2022-04-18 14:41:29,134: INFO/ForkPoolWorker-2] Task providers.tasks.provider_values_creation_task[7d225699-c7be-430d-98ff-faa1ebcf2104] succeeded in 0.024452968998957658s: True
+[2022-04-18 14:41:29,154: INFO/MainProcess] Task providers.tasks.send_data[048864e8-0f18-45b2-8b63-a90de2c92f81] received
+[2022-04-18 14:41:29,154: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[d4ef3237-ad65-459f-a153-2f8556eb368f] succeeded in 0.0478120769985253s: None
+[2022-04-18 14:41:29,155: INFO/MainProcess] Task providers.tasks.send_data[f144ec4b-8451-409c-bdf2-8778ef779ef0] received
+[2022-04-18 14:41:29,369: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[f144ec4b-8451-409c-bdf2-8778ef779ef0] succeeded in 0.21300820000033127s: None
+[2022-04-18 14:41:29,371: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[048864e8-0f18-45b2-8b63-a90de2c92f81] succeeded in 0.21460311299961177s: None
+[2022-04-18 14:42:00,021: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 14:42:00,029: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 14:42:00,031: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[31b481ca-82b3-4daf-8634-9d3cc9177370] received
+[2022-04-18 14:42:00,038: INFO/MainProcess] Task providers.tasks.process_values_sending[c8c07d43-1640-44f3-9ee3-7d4362f32fed] received
+[2022-04-18 14:42:00,082: INFO/MainProcess] Task providers.tasks.send_data[8dd429d6-f0f3-4c7f-b751-1166bb034f45] received
+[2022-04-18 14:42:00,083: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[c8c07d43-1640-44f3-9ee3-7d4362f32fed] succeeded in 0.038993218000541674s: None
+[2022-04-18 14:42:00,085: INFO/MainProcess] Task providers.tasks.send_data[d785dfce-b583-465b-b5a8-23ab23d7ce84] received
+[2022-04-18 14:42:00,098: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[31b481ca-82b3-4daf-8634-9d3cc9177370] succeeded in 0.06495360500048264s: True
+[2022-04-18 14:42:00,311: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[d785dfce-b583-465b-b5a8-23ab23d7ce84] succeeded in 0.2241370769988862s: None
+[2022-04-18 14:42:00,316: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[8dd429d6-f0f3-4c7f-b751-1166bb034f45] succeeded in 0.2295842800012906s: None
+[2022-04-18 14:43:00,051: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 14:43:00,059: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 14:43:00,062: INFO/MainProcess] Task providers.tasks.process_values_sending[3f164258-8440-48a3-899e-7b79e14e87f6] received
+[2022-04-18 14:43:00,067: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[478add3b-4fb2-4a93-805f-1b09bfdc77f2] received
+[2022-04-18 14:43:00,157: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[478add3b-4fb2-4a93-805f-1b09bfdc77f2] succeeded in 0.0873065760024474s: True
+[2022-04-18 14:43:00,189: INFO/MainProcess] Task providers.tasks.send_data[b0f2ff7c-3447-4359-a215-07973a28b83f] received
+[2022-04-18 14:43:00,190: INFO/MainProcess] Task providers.tasks.send_data[3e707115-8ea7-416d-8246-fde163176329] received
+[2022-04-18 14:43:00,191: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[3f164258-8440-48a3-899e-7b79e14e87f6] succeeded in 0.12171697699886863s: None
+[2022-04-18 14:43:00,195: INFO/MainProcess] Task providers.tasks.send_data[4e743883-60dc-42dc-b4b8-f6e19c100527] received
+[2022-04-18 14:43:00,448: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[b0f2ff7c-3447-4359-a215-07973a28b83f] succeeded in 0.2569126909984334s: None
+[2022-04-18 14:43:00,483: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[3e707115-8ea7-416d-8246-fde163176329] succeeded in 0.2922409559978405s: None
+[2022-04-18 14:43:00,495: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[4e743883-60dc-42dc-b4b8-f6e19c100527] succeeded in 0.2999032289990282s: None
+[2022-04-18 14:44:00,051: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 14:44:00,059: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 14:44:00,061: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[9de5752d-7c40-46bd-ab16-202bbece3469] received
+[2022-04-18 14:44:00,066: INFO/MainProcess] Task providers.tasks.process_values_sending[73da29a6-6648-4989-96a1-8bd6ccf5c90a] received
+[2022-04-18 14:44:00,087: INFO/MainProcess] Task providers.tasks.send_data[df83a69f-4d14-4553-90a3-58d2c0ded8f6] received
+[2022-04-18 14:44:00,089: INFO/MainProcess] Task providers.tasks.send_data[43047f37-d38c-4838-b55f-8a13c090fa7f] received
+[2022-04-18 14:44:00,090: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[73da29a6-6648-4989-96a1-8bd6ccf5c90a] succeeded in 0.021061330000520684s: None
+[2022-04-18 14:44:00,093: INFO/MainProcess] Task providers.tasks.send_data[7eb9f23e-c5c7-4091-987d-68aac127a6d2] received
+[2022-04-18 14:44:00,095: INFO/ForkPoolWorker-8] Task providers.tasks.provider_values_creation_task[9de5752d-7c40-46bd-ab16-202bbece3469] succeeded in 0.03244572400217294s: True
+[2022-04-18 14:44:00,309: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[7eb9f23e-c5c7-4091-987d-68aac127a6d2] succeeded in 0.21494773599988548s: None
+[2022-04-18 14:44:00,388: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[43047f37-d38c-4838-b55f-8a13c090fa7f] succeeded in 0.2979364370003168s: None
+[2022-04-18 14:44:00,389: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[df83a69f-4d14-4553-90a3-58d2c0ded8f6] succeeded in 0.2993123939995712s: None
+[2022-04-18 14:45:00,062: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 14:45:00,069: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 14:45:00,071: INFO/MainProcess] Task providers.tasks.process_values_sending[86c6dd6b-d79a-4ab0-9751-9b60e1a6939e] received
+[2022-04-18 14:45:00,080: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[d034fc1e-f165-48c5-b043-6a377ce5f6ae] received
+[2022-04-18 14:45:00,118: INFO/MainProcess] Task providers.tasks.send_data[50d179cd-a00a-41b7-9bb7-3d5520667ab2] received
+[2022-04-18 14:45:00,123: INFO/MainProcess] Task providers.tasks.send_data[7d6d641c-c11c-4ed5-8707-93c0b350b1f3] received
+[2022-04-18 14:45:00,125: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[86c6dd6b-d79a-4ab0-9751-9b60e1a6939e] succeeded in 0.051417490001767874s: None
+[2022-04-18 14:45:00,129: INFO/MainProcess] Task providers.tasks.send_data[12c77109-12b0-4e4c-8927-e5b1f58cdbff] received
+[2022-04-18 14:45:00,157: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[d034fc1e-f165-48c5-b043-6a377ce5f6ae] succeeded in 0.07160462100000586s: True
+[2022-04-18 14:45:00,546: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[50d179cd-a00a-41b7-9bb7-3d5520667ab2] succeeded in 0.4218207420017279s: None
+[2022-04-18 14:45:00,547: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[7d6d641c-c11c-4ed5-8707-93c0b350b1f3] succeeded in 0.4226308010001958s: None
+[2022-04-18 14:45:00,548: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[12c77109-12b0-4e4c-8927-e5b1f58cdbff] succeeded in 0.4053555589998723s: None
+[2022-04-18 14:46:00,050: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-18 14:46:00,058: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-18 14:46:00,060: INFO/MainProcess] Task providers.tasks.process_values_sending[d33c1500-b04a-4b05-986c-96de3f84ac81] received
+[2022-04-18 14:46:00,065: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[853c2b10-41c3-451c-beba-d1bc0ca42f7e] received
+[2022-04-18 14:46:00,106: INFO/MainProcess] Task providers.tasks.send_data[b5c42de4-d14c-4b1a-a7fe-e431abb2c15d] received
+[2022-04-18 14:46:00,110: INFO/MainProcess] Task providers.tasks.send_data[40c20e97-2004-4992-8c1e-f58fdde58255] received
+[2022-04-18 14:46:00,111: INFO/ForkPoolWorker-8] Task providers.tasks.process_values_sending[d33c1500-b04a-4b05-986c-96de3f84ac81] succeeded in 0.0449725349972141s: None
+[2022-04-18 14:46:00,116: INFO/MainProcess] Task providers.tasks.send_data[f6670687-4334-43f6-aa11-dfb85e76fb7b] received
+[2022-04-18 14:46:00,141: INFO/ForkPoolWorker-9] Task providers.tasks.provider_values_creation_task[853c2b10-41c3-451c-beba-d1bc0ca42f7e] succeeded in 0.07478101500237244s: True
+[2022-04-18 14:46:00,686: INFO/ForkPoolWorker-3] Task providers.tasks.send_data[40c20e97-2004-4992-8c1e-f58fdde58255] succeeded in 0.5743038969994814s: None
+[2022-04-18 14:46:00,688: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[b5c42de4-d14c-4b1a-a7fe-e431abb2c15d] succeeded in 0.5756716269970639s: None
+[2022-04-18 14:46:00,688: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[f6670687-4334-43f6-aa11-dfb85e76fb7b] succeeded in 0.5599623660018551s: None
+[2022-04-18 14:46:55,354: INFO/MainProcess] beat: Shutting down...
+[2022-04-19 13:39:22,021: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-19 13:39:22,032: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-19 13:39:23,051: INFO/MainProcess] mingle: all alone
+[2022-04-19 13:39:23,065: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-19 13:39:23,065: INFO/MainProcess] celery@09e402e73f37 ready.
+[2022-04-19 13:39:24,167: INFO/Beat] beat: Starting...
+[2022-04-19 13:39:24,184: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-19 13:39:24,195: INFO/MainProcess] Task providers.tasks.provider_creation_task[2c4d7ea6-9f6a-4ded-a6e7-176715d7ce23] received
+[2022-04-19 13:39:24,197: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-19 13:39:24,198: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-19 13:39:24,199: INFO/MainProcess] Task providers.tasks.process_values_sending[bd0266ff-f6a4-41ca-ac7a-c0553205c948] received
+[2022-04-19 13:39:24,201: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[aef7691e-4f21-4e2e-a743-f3868229abb4] received
+[2022-04-19 13:39:24,215: INFO/ForkPoolWorker-8] Task providers.tasks.provider_creation_task[2c4d7ea6-9f6a-4ded-a6e7-176715d7ce23] succeeded in 0.018224601000000007s: True
+[2022-04-19 13:39:24,224: INFO/ForkPoolWorker-2] Task providers.tasks.provider_values_creation_task[aef7691e-4f21-4e2e-a743-f3868229abb4] succeeded in 0.022337768999989294s: True
+[2022-04-19 13:39:24,245: INFO/MainProcess] Task providers.tasks.send_data[02e2fab8-0b81-4def-9d4e-8841d80237b0] received
+[2022-04-19 13:39:24,246: INFO/MainProcess] Task providers.tasks.send_data[9ff13eb6-5c7b-44c8-84de-c4614630de35] received
+[2022-04-19 13:39:24,246: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[bd0266ff-f6a4-41ca-ac7a-c0553205c948] succeeded in 0.04625351900000396s: None
+[2022-04-19 13:39:24,247: INFO/MainProcess] Task providers.tasks.send_data[127e5987-944a-4659-85c5-90eda1f3d50a] received
+[2022-04-19 13:39:24,497: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[02e2fab8-0b81-4def-9d4e-8841d80237b0] succeeded in 0.25088325100000475s: None
+[2022-04-19 13:39:24,498: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[9ff13eb6-5c7b-44c8-84de-c4614630de35] succeeded in 0.2518484979999869s: None
+[2022-04-19 13:39:24,501: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[127e5987-944a-4659-85c5-90eda1f3d50a] succeeded in 0.25066823199999533s: None
+[2022-04-19 13:39:29,444: INFO/MainProcess] beat: Shutting down...
+[2022-04-19 14:29:06,654: INFO/MainProcess] Connected to redis://redis_host:6379/0
+[2022-04-19 14:29:06,664: INFO/MainProcess] mingle: searching for neighbors
+[2022-04-19 14:29:07,682: INFO/MainProcess] mingle: all alone
+[2022-04-19 14:29:07,692: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-04-19 14:29:07,692: INFO/MainProcess] celery@b276fa180181 ready.
+[2022-04-19 14:29:08,643: INFO/Beat] beat: Starting...
+[2022-04-19 14:29:08,662: INFO/Beat] Scheduler: Sending due task provider_creation_task (providers.tasks.provider_creation_task)
+[2022-04-19 14:29:08,672: INFO/MainProcess] Task providers.tasks.provider_creation_task[53d34be0-7d2f-43f2-a76d-081683f558f6] received
+[2022-04-19 14:29:08,673: INFO/Beat] Scheduler: Sending due task process_values_sending (providers.tasks.process_values_sending)
+[2022-04-19 14:29:08,674: INFO/Beat] Scheduler: Sending due task provider_values_creation_task (providers.tasks.provider_values_creation_task)
+[2022-04-19 14:29:08,674: INFO/MainProcess] Task providers.tasks.process_values_sending[6be358fe-0a71-4f54-b7d7-fe18f10b57e1] received
+[2022-04-19 14:29:08,675: INFO/MainProcess] Task providers.tasks.provider_values_creation_task[b6cacd4b-06c4-4c16-bf28-5cb0914e8643] received
+[2022-04-19 14:29:08,687: INFO/ForkPoolWorker-8] Task providers.tasks.provider_creation_task[53d34be0-7d2f-43f2-a76d-081683f558f6] succeeded in 0.013937191999957577s: True
+[2022-04-19 14:29:08,705: INFO/ForkPoolWorker-2] Task providers.tasks.provider_values_creation_task[b6cacd4b-06c4-4c16-bf28-5cb0914e8643] succeeded in 0.028184105000036652s: True
+[2022-04-19 14:29:08,711: INFO/MainProcess] Task providers.tasks.send_data[c7126aa1-f423-48cf-b3ee-bd0cd54bbb58] received
+[2022-04-19 14:29:08,713: INFO/MainProcess] Task providers.tasks.send_data[229d32dd-eeec-4aa3-a24d-1b747e6ffaca] received
+[2022-04-19 14:29:08,713: INFO/ForkPoolWorker-9] Task providers.tasks.process_values_sending[6be358fe-0a71-4f54-b7d7-fe18f10b57e1] succeeded in 0.038193260999833s: None
+[2022-04-19 14:29:08,714: INFO/MainProcess] Task providers.tasks.send_data[bf842a3f-9eb4-44e8-9a42-5d90d25ec82b] received
+[2022-04-19 14:29:08,933: INFO/ForkPoolWorker-8] Task providers.tasks.send_data[c7126aa1-f423-48cf-b3ee-bd0cd54bbb58] succeeded in 0.22002403199985565s: None
+[2022-04-19 14:29:08,934: INFO/ForkPoolWorker-2] Task providers.tasks.send_data[229d32dd-eeec-4aa3-a24d-1b747e6ffaca] succeeded in 0.22103949199981798s: None
+[2022-04-19 14:29:08,934: INFO/ForkPoolWorker-9] Task providers.tasks.send_data[bf842a3f-9eb4-44e8-9a42-5d90d25ec82b] succeeded in 0.21832387600034053s: None
+[2022-04-19 14:29:18,388: INFO/MainProcess] beat: Shutting down...

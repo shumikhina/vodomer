@@ -1,9 +1,11 @@
 from django.db import models
 
+from authapp.models import Customer
+
 
 class Client(models.Model):
 
-    client_id = models.IntegerField()
+    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
 
 
 class ProviderTypeChoices(models.TextChoices):

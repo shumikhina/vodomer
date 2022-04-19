@@ -1,48 +1,48 @@
 version: '3'
 
 services:
-  emulator:
-    build: ./emulator
-    command: python manage.py runserver 0.0.0.0:8000
-    entrypoint: ['sh', '/entrypoint.sh']
-    volumes:
-      - ./emulator:/code
-    ports:
-      - "9000:8000"
-    links:
-      - "emulator_db:postgres_db"
-      - "redis:redis_host"
-    depends_on:
-      - emulator_db
+#  emulator:
+#    build: ./emulator
+#    command: python manage.py runserver 0.0.0.0:8000
+#    entrypoint: ['sh', '/entrypoint.sh']
+#    volumes:
+#      - ./emulator:/code
+#    ports:
+#      - "9000:8000"
+#    links:
+#      - "emulator_db:postgres_db"
+#      - "redis:redis_host"
+#    depends_on:
+#      - emulator_db
   redis:
     image: "redis:alpine"
     ports:
       - "6379:6379"
-  emulator_db:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_DB: 'ascuv_emulator'
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-    volumes:
-      - ./emulator/postgres_db:/var/lib/postgresql/data
-    ports:
-      - '7777:5432'
-    expose:
-      - '5432'
-  worker:
-    build: ./emulator
-    command: celery -A ascuv_emulator worker -l info -f celery.logs -B
-    entrypoint: ['sh', '/entrypoint.sh']
-    links:
-      - "redis:redis_host"
-      - "emulator_db:postgres_db"
-    volumes:
-      - ./emulator:/code
-    depends_on:
-      - emulator_db
-      - emulator
+#  emulator_db:
+#    image: postgres
+#    restart: always
+#    environment:
+#      POSTGRES_DB: 'ascuv_emulator'
+#      POSTGRES_USER: "postgres"
+#      POSTGRES_PASSWORD: "postgres"
+#    volumes:
+#      - ./emulator/postgres_db:/var/lib/postgresql/data
+#    ports:
+#      - '7777:5432'
+#    expose:
+#      - '5432'
+#  worker:
+#    build: ./emulator
+#    command: celery -A ascuv_emulator worker -l info -f celery.logs -B
+#    entrypoint: ['sh', '/entrypoint.sh']
+#    links:
+#      - "redis:redis_host"
+#      - "emulator_db:postgres_db"
+#    volumes:
+#      - ./emulator:/code
+#    depends_on:
+#      - emulator_db
+#      - emulator
   vodomer:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
