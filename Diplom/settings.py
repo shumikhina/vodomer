@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_extensions',
+
     'authapp',
     'core',
-    'django_extensions'
+    'dashboards',
 ]
 
 AUTH_USER_MODEL = 'authapp.Customer'

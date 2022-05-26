@@ -1,11 +1,15 @@
+import uuid
+
 from django.db import models
 
-from authapp.models import Customer
+from authapp.models import Customer, CustomerGroup
 
 
 class Client(models.Model):
 
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    token = models.CharField(max_length=36, default=uuid.uuid4)
+    group = models.ForeignKey(CustomerGroup, on_delete=models.PROTECT)
 
 
 class ProviderTypeChoices(models.TextChoices):

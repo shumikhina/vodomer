@@ -2,7 +2,7 @@ from django.db import transaction
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from authapp.models import CustomerResetPasswordAttempt
+from authapp.models import CustomerResetPasswordAttempt, CustomerGroup
 from authapp.services.create_customer import CreateInactiveCustomerService
 from base.utils import get_password_reset_link
 
@@ -10,6 +10,7 @@ from base.utils import get_password_reset_link
 class CreateCustomerSerializer(serializers.Serializer):
 
     username = serializers.CharField(write_only=True)
+    group = serializers.PrimaryKeyRelatedField(queryset=CustomerGroup.objects.all())
     reset_link = serializers.CharField(read_only=True)
 
     def create(self, validated_data):

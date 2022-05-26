@@ -2,7 +2,7 @@ from django.db import transaction, IntegrityError
 from rest_framework.exceptions import ValidationError
 
 from core.models import Client
-from authapp.models import Customer, CustomerResetPasswordAttempt
+from authapp.models import Customer, CustomerResetPasswordAttempt, CustomerGroup
 
 
 class CreateInactiveCustomerService:
@@ -13,8 +13,8 @@ class CreateInactiveCustomerService:
         self.username = username
 
     @staticmethod
-    def _create_client_for_customer(customer: Customer) -> Client:
-        return Client.objects.create(customer=customer)
+    def _create_client_for_customer(customer: Customer, group: CustomerGroup) -> Client:
+        return Client.objects.create(customer=customer, group=group)
 
     @staticmethod
     def _create_reset_password_attempt(customer: Customer) -> CustomerResetPasswordAttempt:
@@ -26,7 +26,7 @@ class CreateInactiveCustomerService:
         ).first()
 
     @transaction.atomic()
-    def create(self, **kwargs) -> Customer:
+    def create(self, group, **kwargs) -> Customer:
         customer_kwargs = {
             'username': self.username,
             'password': self.INVALID_PASSWORD_PLACEHOLDER,
@@ -37,6 +37,6 @@ class CreateInactiveCustomerService:
             customer = Customer.objects.create(**customer_kwargs)
         except IntegrityError:
             raise ValidationError('Username already exists')
-        self._create_client_for_customer(customer)
+        self._create_client_for_customer(customer, group)
         self._create_reset_password_attempt(customer)
         return customer

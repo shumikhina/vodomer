@@ -20,6 +20,6 @@ from core.views import ReceiveDataFromProvidersView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/receive/', ReceiveDataFromProvidersView.as_view()),
+    path('core/', include('core.urls')),
     path('auth/', include('authapp.urls')),
 ]
