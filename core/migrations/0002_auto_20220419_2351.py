@@ -19,9 +19,4 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.PROTECT, to='authapp.customergroup'),
             preserve_default=False,
         ),
-        migrations.AddField(
-            model_name='client',
-            name='token',
-            field=models.CharField(default=core.models.get_uuid_token, max_length=36),
-        ),
     ]

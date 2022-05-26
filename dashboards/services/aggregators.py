@@ -4,14 +4,23 @@ from django.db.models import Max, Sum, Subquery, OuterRef, Q, Count
 from django.db.models.functions import TruncHour, TruncDay, TruncMonth
 
 
-class DateGroupDimensionEnum(Enum):
+class BaseEnum(Enum):
+
+    @classmethod
+    def values(cls):
+        res = []
+        for member in cls:
+            res.append(member.value)
+        return res
+
+class DateGroupDimensionEnum(BaseEnum):
 
     HOUR = 'hour'
     DAY = 'day'
     MONTH = 'month'
 
 
-class ChartTypeEnum(Enum):
+class ChartTypeEnum(BaseEnum):
 
     DELTA = 'delta'
     ABSOLUTE = 'absolute'

@@ -12,4 +12,4 @@ class LinearDashboard:
         query = self._get_values_queryset()
         for filter_service in filters:
             query = filter_service.get_filtered_query(query)
-        return aggregator().get_aggregated_data(query)
+        return aggregator.get_aggregated_data(query)

@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from core.models import ProviderTypeChoices
+from dashboards.services.aggregators import LinearDashboardQueryAggregator
 from dashboards.services.filters.date_filter import OneDayQueryFilter, RangeDateFilter
 from dashboards.services.filters.provider_filter import ClientQueryFilter, GroupQueryFilter, ProviderTypeQueryFilter
 
@@ -65,8 +66,3 @@ class LinearDashboardFilterFactory(BaseFactory):
         else:
             filters.append(GroupQueryFilter(self.groups))
         return filters
-
-
-class LinearDashboardAggregatorFactory(BaseFactory):
-
-    def get_aggregator(self):

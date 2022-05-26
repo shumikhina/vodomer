@@ -15,7 +15,7 @@ class CreateCustomerSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         service = CreateInactiveCustomerService(validated_data['username'])
-        service.create()
+        service.create(validated_data['group'])
         attempt = service.get_reset_password_attempt()
         validated_data['reset_link'] = get_password_reset_link(attempt.key)
         return validated_data
